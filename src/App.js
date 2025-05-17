@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-// Version 2 -  Dark Mode With Bug
-=======
 // Version 3 - With Dark Mode, Bug Fixed
 >>>>>>> bugfix-save-settings
 import React, { useState, useEffect } from 'react';
