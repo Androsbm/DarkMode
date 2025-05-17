@@ -1,9 +1,18 @@
-// Version 1 - Without Dark Mode
+// Version 2 -  Dark Mode With Bug
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+    const [darkMode, setDarkMode] = useState(false);
     const [settings, setSettings] = useState({ username: '', email: '' });
+
+    useEffect(() => {
+        if (darkMode) {
+            document.body.classList.add('dark');
+        } else {
+            document.body.classList.remove('dark');
+        }
+    }, [darkMode]);
 
     useEffect(() => {
         const savedSettings = JSON.parse(localStorage.getItem('settings'));
@@ -21,7 +30,10 @@ function App() {
     return (
         <div className="App p-6">
             <h1 className="text-2xl mb-4">User Settings</h1>
-            <form onSubmit={handleSave} className="p-4 rounded-xl bg-gray-100">
+            <button onClick={() => setDarkMode(!darkMode)} className="mb-4 bg-gray-200 dark:bg-gray-600 p-2 rounded-xl">
+                Toggle Dark Mode
+            </button>
+            <form onSubmit={handleSave} className="p-4 rounded-xl bg-gray-100 dark:bg-gray-700">
                 <label className="block mb-2">
                     Username:
                     <input
